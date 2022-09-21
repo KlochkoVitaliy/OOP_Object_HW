@@ -9,11 +9,30 @@ public class Human {
     String town;
     String job;
 
+//    Human(String name){
+//        this(String name, String town, int yearOfBirth, String job)
+//    }
     Human(String name, String town, int yearOfBirth, String job) {
-        this.name = name;
-        this.town = town;
-        this.yearOfBirth = 2022 - yearOfBirth;
-        this.job = job;
+        if(name==null){
+            this.name = "Информация не указана";
+        }else {
+            this.name = name;
+        }
+        if(town==null){
+            this.town = "Информация не указана";
+        }else {
+            this.town = town;
+        }
+        if (yearOfBirth >= 0) {
+            this.yearOfBirth = 2022 - yearOfBirth;
+        } else {
+            this.yearOfBirth = 0;
+        }
+        if(job==null){
+            this.job="Информация не указана";
+        }else{
+            this.job = job;
+        }
     }
 
     void result() {

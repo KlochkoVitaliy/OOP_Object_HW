@@ -1,5 +1,4 @@
 package redone_Car;
-
     public class Car {
         String brand;
         String model;

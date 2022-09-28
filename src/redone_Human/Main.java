@@ -21,5 +21,10 @@ public class Main {
 
         Human h4 = new Human("Артем","Москва",27,"директора по развитию бизнеса");
         h4.result();
+
+        System.out.println();
+
+        Human h5 = new Human("Владимир", "Казань", 21, "сейчас нигде не работает");
+        h5.result();
     }
 }

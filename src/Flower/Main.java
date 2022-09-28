@@ -37,6 +37,26 @@ public class Main {
 
         System.out.println();
         System.out.println(ANSI_GREEN + "Состав:  " + ANSI_RESET + structure + ANSI_GREEN + "Стоимость букета - " + ANSI_RESET + ANSI_RED + result + ANSI_RESET + ANSI_GREEN + " и простоит он - " + ANSI_RESET + term + ANSI_GREEN + " day/days." + ANSI_RESET);
+
+//In razbor ))
+        System.out.println();
+        printCostOfFlower(f1, f1, f1, f2, f2, f2, f2, f2, f4);
+
+    }
+
+    private static void printCostOfFlower(Flower... flowers) {
+        double totalCost = 0;
+        int minimumLifeSpan = Integer.MAX_VALUE;
+        for (Flower flower : flowers) {
+            if (flower.lifeSpan < minimumLifeSpan) {
+                minimumLifeSpan = flower.lifeSpan;
+            }
+            totalCost += flower.getCost();
+            //System.out.println(flower);
+        }
+        totalCost = totalCost * 1.1;
+        System.out.println("Стоимость букета: " + totalCost);
+        System.out.println("Срок стояния букета: " + minimumLifeSpan);
     }
 }
 

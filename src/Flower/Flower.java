@@ -14,7 +14,11 @@ public class Flower {
     }
 
     public void setFlowerColor(String flowerColor) {
-        this.flowerColor = flowerColor;
+        if (flowerColor == null) {
+            this.flowerColor = "Белый";
+        } else {
+            this.flowerColor = flowerColor;
+        }
     }
 
     public String getCountry() {
@@ -22,7 +26,11 @@ public class Flower {
     }
 
     public void setCountry(String country) {
-        this.country = country;
+        if (country == null) {
+            this.country = "Россия";
+        } else {
+            this.country = ANSI_GREEN + ", страна происхождения - " + ANSI_RESET + country;
+        }
     }
 
     public double getCost() {
@@ -30,7 +38,11 @@ public class Flower {
     }
 
     public void setCost(double cost) {
-        this.cost = cost;
+        if (cost <=0) {
+            this.cost = 1;
+        } else {
+            this.cost = cost;
+        }
     }
 
     public Flower(String flowerColor, String country, double cost, int lifeSpan) {
@@ -44,10 +56,10 @@ public class Flower {
         } else {
             this.country = ANSI_GREEN + ", страна происхождения - " + ANSI_RESET + country;
         }
-        if (cost > 0 && cost != 0) {
-            this.cost = cost;
-        } else {
+        if (cost <=0) {
             this.cost = 1;
+        } else {
+            this.cost = cost;
         }
         if (lifeSpan >= 0) {
             this.lifeSpan = lifeSpan;

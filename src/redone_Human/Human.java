@@ -1,18 +1,39 @@
 package redone_Human;
 
+import java.time.LocalDate;
+
 public class Human {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
-    int yearOfBirth;
+    private  int yearOfBirth;
     String name;
-    String town;
+    private String town;
     String job;
 
-//    Human(String name){
-//        this(String name, String town, int yearOfBirth, String job)
-//    }
-    Human(String name, String town, int yearOfBirth, String job) {
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        if (town == null) {
+            this.town = "Информация не указана";
+        } else {
+            this.town = town;
+        }
+    }
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public void setYearOfBirth(int yearOfBirth) {
+        if (yearOfBirth >= 0) {
+            this.yearOfBirth =  LocalDate.now().getYear() - yearOfBirth;
+        } else {
+            this.yearOfBirth = 0;
+        }
+    }
+    public Human(String name, String town, int yearOfBirth, String job) {
         if(name==null){
             this.name = "Информация не указана";
         }else {
@@ -24,7 +45,7 @@ public class Human {
             this.town = town;
         }
         if (yearOfBirth >= 0) {
-            this.yearOfBirth = 2022 - yearOfBirth;
+            this.yearOfBirth =  LocalDate.now().getYear() - yearOfBirth;
         } else {
             this.yearOfBirth = 0;
         }
@@ -44,5 +65,7 @@ public class Human {
     }
 
 }
+
+
 
 

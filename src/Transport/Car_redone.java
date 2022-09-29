@@ -1,10 +1,8 @@
 package Transport;
 
-import java.awt.*;
-import java.security.Key;
 import java.time.LocalDate;
 
-public class Car_redone {
+public class Car_redone extends Transport {
 
     public static class Key {
         private final boolean disStart;
@@ -46,6 +44,7 @@ public class Car_redone {
                 this.numOfInsurance = numOfInsurance;
             }
         }
+
         public Insurance() {
             this(null, 10_000, null);
         }
@@ -75,12 +74,7 @@ public class Car_redone {
         }
     }
 
-    private final String brand;
-    private final String model;
     private double engineVolume;
-    private String color;
-    private final int productionYear;
-    private final String productionCountry;
     private String gearBox;
     private final String body;
     private String registrationNumber;
@@ -88,6 +82,28 @@ public class Car_redone {
     private boolean tiresWinOrSum;
     private Key key;
     private Insurance insurance;
+
+    public Car_redone(String brand,
+                      String model,
+                      int productionYear,
+                      String productionCountry,
+                      String color,
+                      double engineVolume) {
+        this(brand,
+                model,
+                productionYear,
+                productionCountry,
+                color,
+                engineVolume,
+                "MT",
+                "SEDAN",
+                "x000xx000",
+                5,
+                true,
+                new Key(),
+                new Insurance()
+        );
+    }
 
     public Car_redone(String brand,
                       String model,
@@ -103,28 +119,8 @@ public class Car_redone {
                       Key key,
                       Insurance insurance) {
 
-        if (brand == null) {
-            this.brand = "default";
-        } else {
-            this.brand = brand;
-        }
-        if (model == null) {
-            this.model = "default";
-        } else {
-            this.model = model;
-        }
-        this.productionYear = productionYear;
+        super(brand, model, productionYear, productionCountry, color,0);
 
-        if (productionCountry == null) {
-            this.productionCountry = "default";
-        } else {
-            this.productionCountry = brand;
-        }
-        if (color == null) {
-            this.color = "белый";
-        } else {
-            this.color = color;
-        }
         this.engineVolume = engineVolume;
         if (gearBox == null) {
             this.gearBox = "MT";
@@ -155,60 +151,21 @@ public class Car_redone {
         }
     }
 
-    public Car_redone(String brand,
-                      String model,
-                      int productionYear,
-                      String productionCountry,
-                      String color,
-                      double engineVolume) {
-        this(brand,
-                model,
-                productionYear,
-                productionCountry,
-                color,
-                engineVolume,
-                "MT",
-                "SEDAN",
-                "x000xx000",
-                5,
-                true,
-                new Key(),
-                new Insurance()
-        );
-
-    }
-
-    public void result() {
-        System.out.println(brand +
-                model + ", " +
-                productionYear +
-                " год выпуска, " +
-                "сборка в " +
-                productionCountry + ", " +
-                color + " цвета," +
-                " обьем двигателя - " +
-                engineVolume + ", коробка передач " +
-                gearBox + ", кузов " + body +
-                ", рег.знак - " + registrationNumber +
-                ", кол-во мест: " + numberOfSeats +
-                ", сезонность резины - " + tiresWinOrSum);
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getProductionYear() {
-        return productionYear;
-    }
-
-    public String getProductionCountry() {
-        return productionCountry;
-    }
+//    public void result() {
+//        System.out.println(brand +
+//                model + ", " +
+//                productionYear +
+//                " год выпуска, " +
+//                "сборка в " +
+//                productionCountry + ", " +
+//                color + " цвета," +
+//                " обьем двигателя - " +
+//                engineVolume + ", коробка передач " +
+//                gearBox + ", кузов " + body +
+//                ", рег.знак - " + registrationNumber +
+//                ", кол-во мест: " + numberOfSeats +
+//                ", сезонность резины - " + tiresWinOrSum);
+//    }
 
     public String getBody() {
         return body;
@@ -230,18 +187,6 @@ public class Car_redone {
         }
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        if (color == null) {
-            this.color = "белый";
-        } else {
-            this.color = color;
-        }
-    }
-
     public String getGearBox() {
         return gearBox;
     }
@@ -257,7 +202,6 @@ public class Car_redone {
     public int getNumberOfSeats() {
         return numberOfSeats;
     }
-
     public void setNumberOfSeats(int numberOfSeats) {
         if (numberOfSeats == 0) {
             this.numberOfSeats = 000;
@@ -316,8 +260,6 @@ public class Car_redone {
         }
         return Character.isDigit(chars[1]) && Character.isDigit(chars[2]) && Character.isDigit(chars[3]) && Character.isDigit(chars[6]) && Character.isDigit(chars[7]) && Character.isDigit(chars[8]);
     }
-
-
 }
 
 

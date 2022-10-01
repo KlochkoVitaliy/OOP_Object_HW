@@ -88,7 +88,7 @@ public class Car_redone extends Transport {
                       int productionYear,
                       String productionCountry,
                       String color,
-                      double engineVolume) {
+                      double engineVolume  ) {
         this(brand,
                 model,
                 productionYear,
@@ -102,6 +102,7 @@ public class Car_redone extends Transport {
                 true,
                 new Key(),
                 new Insurance()
+
         );
     }
 
@@ -119,7 +120,7 @@ public class Car_redone extends Transport {
                       Key key,
                       Insurance insurance) {
 
-        super(brand, model, productionYear, productionCountry, color,0);
+        super(brand, model, productionYear, productionCountry, color, 0, "Топлво");
 
         this.engineVolume = engineVolume;
         if (gearBox == null) {
@@ -151,21 +152,6 @@ public class Car_redone extends Transport {
         }
     }
 
-//    public void result() {
-//        System.out.println(brand +
-//                model + ", " +
-//                productionYear +
-//                " год выпуска, " +
-//                "сборка в " +
-//                productionCountry + ", " +
-//                color + " цвета," +
-//                " обьем двигателя - " +
-//                engineVolume + ", коробка передач " +
-//                gearBox + ", кузов " + body +
-//                ", рег.знак - " + registrationNumber +
-//                ", кол-во мест: " + numberOfSeats +
-//                ", сезонность резины - " + tiresWinOrSum);
-//    }
 
     public String getBody() {
         return body;
@@ -202,6 +188,7 @@ public class Car_redone extends Transport {
     public int getNumberOfSeats() {
         return numberOfSeats;
     }
+
     public void setNumberOfSeats(int numberOfSeats) {
         if (numberOfSeats == 0) {
             this.numberOfSeats = 000;
@@ -242,6 +229,11 @@ public class Car_redone extends Transport {
         this.insurance = insurance;
     }
 
+    @Override
+    public void refill() {
+        System.out.println("Топливо "+getFuel());
+    }
+
     public boolean isSummerTyres() {
         return tiresWinOrSum;
     }
@@ -260,6 +252,7 @@ public class Car_redone extends Transport {
         }
         return Character.isDigit(chars[1]) && Character.isDigit(chars[2]) && Character.isDigit(chars[3]) && Character.isDigit(chars[6]) && Character.isDigit(chars[7]) && Character.isDigit(chars[8]);
     }
+
 }
 
 

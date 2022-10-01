@@ -1,16 +1,17 @@
 package Transport;
 
-public class Transport {
+public abstract class Transport {
 
-    private  String brand;
-    private  String model;
-    private  int productionYear;
-    private   String productionCountry;
+    private String brand;
+    private String model;
+    private int productionYear;
+    private String productionCountry;
     private String color;
     private int maxSpeed;
+    private String fuel;
 
-    public Transport(String brand, String model, int productionYear, String productionCountry ) {
-        this(brand,model,productionYear,productionCountry,"Белый",1000);
+    public Transport(String brand, String model, int productionYear, String productionCountry, String fuel) {
+        this(brand, model, productionYear, productionCountry, "Белый", 1000, fuel);
 
         if (brand == null) {
             this.brand = "default";
@@ -39,8 +40,11 @@ public class Transport {
         } else {
             this.maxSpeed = maxSpeed;
         }
+        this.fuel = fuel;
+
     }
-    public Transport(String brand, String model, int productionYear, String productionCountry, String color,int maxSpeed) {
+
+    public Transport(String brand, String model, int productionYear, String productionCountry, String color, int maxSpeed, String fuel) {
         if (brand == null) {
             this.brand = "default";
         } else {
@@ -68,11 +72,26 @@ public class Transport {
         } else {
             this.maxSpeed = maxSpeed;
         }
+        this.fuel = fuel;
+
     }
 
-    public  String getBrand() {
+    public String getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(String fuel) {
+        if (fuel == null) {
+            this.fuel = "default";
+        } else {
+            this.fuel = fuel;
+        }
+    }
+
+    public String getBrand() {
         return brand;
     }
+
     public void setBrand(String brand) {
         if (brand == null) {
             this.brand = "default";
@@ -80,6 +99,7 @@ public class Transport {
             this.brand = brand;
         }
     }
+
     public String getModel() {
         return model;
     }
@@ -117,10 +137,12 @@ public class Transport {
     }
 
     public void setMaxSpeed(int maxSpeed) {
-        if(maxSpeed==0){
-            this.maxSpeed=1000;
-        }else{
+        if (maxSpeed == 0) {
+            this.maxSpeed = 1000;
+        } else {
             this.maxSpeed = maxSpeed;
         }
     }
+
+    public abstract void refill();
 }
